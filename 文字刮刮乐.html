@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+			* {
+				margin:0px;
+				padding:0px;
+			}
+			.yangs {
+				border:2px solid black;
+				width:250px;
+				height:60px;
+				font-size:40px;
+				line-height:60x;
+				text-align:center;
+				position:relative;
+				user-select:none;
+				//文字不被选中;
+			}
+			canvas {
+				position:absolute;
+				left:0;
+				top:0;
+			}
+
+		</style>
+		
+	</head>
+	<body>
+		<div class="yangs">吴书俊是沙雕
+		    <canvas id="mycanvas" width="250px" height="60px"></canvas>
+		</div>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			var canvas = document.getElementById("mycanvas");
+			var ctx = canvas.getContext("2d");
+			ctx.fillStyle = "#CCCCCC";
+			ctx.fillRect(0, 0, 250, 60);
+			//设置新画上的元素，
+			//将新的图像绘制到已有的图像上，
+			ctx.globalCompositeOperation = "destination-out";
+			canvas.onmousedown = function() {
+			    canvas.onmousemove = function(event) {
+			        ctx.beginPath();
+			        ctx.arc(event.offsetX, event.offsetY, 20, 0, 7, false);
+			        ctx.fill();
+			    }
+			}
+		</script>
+	</body>
+</html>
